@@ -54,9 +54,9 @@ namespace CrawfordCrosstraining
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "828761800653328",
+               appSecret: "e97a09ecfe94923e7e26930759308581");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {

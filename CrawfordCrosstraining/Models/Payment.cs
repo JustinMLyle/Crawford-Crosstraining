@@ -9,7 +9,8 @@ namespace CrawfordCrosstraining.Models
     public class Payment
     {
         [Key]
-        int ID { get; set; }
+        public int Id { get; set; }
+
         decimal PaymentValue { get; set; }
         ApplicationUser Member { get; set; }
         

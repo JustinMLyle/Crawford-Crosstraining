@@ -35,5 +35,7 @@ namespace CrawfordCrosstraining.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<CrawfordCrosstraining.Models.Booking> Bookings { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace CrawfordCrosstraining.Models
     {
 
         [Key]
-        int ID { get; set; }
+        public int BookingId { get; set; }
 
         DateTime StartTime { get; set; }
         DateTime EndTime { get; set; }
