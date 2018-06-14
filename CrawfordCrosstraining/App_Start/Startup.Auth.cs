@@ -58,11 +58,11 @@ namespace CrawfordCrosstraining
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "338674790554-17pl1e8dmmurkkf2vutb2fm7o8b6c36j.apps.googleusercontent.com",
+                ClientSecret = "e4ceWXG5yS4C2YGt8MhXlI_V"
+            });
         }
     }
 }
