@@ -1,0 +1,109 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 04/06/2017 11:01
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-folder:before { content: "\f100"; }
+.flaticon-shape-1:before { content: "\f101"; }
+.flaticon-computer:before { content: "\f102"; }
+.flaticon-book:before { content: "\f103"; }
+.flaticon-arrow:before { content: "\f104"; }
+.flaticon-nature-1:before { content: "\f105"; }
+.flaticon-sport:before { content: "\f106"; }
+.flaticon-food-1:before { content: "\f107"; }
+.flaticon-exercise-2:before { content: "\f108"; }
+.flaticon-dumbbell:before { content: "\f109"; }
+.flaticon-maps-and-flags:before { content: "\f10a"; }
+.flaticon-minus-symbol:before { content: "\f10b"; }
+.flaticon-plus-symbol:before { content: "\f10c"; }
+.flaticon-people-1:before { content: "\f10d"; }
+.flaticon-exercise-1:before { content: "\f10e"; }
+.flaticon-nature:before { content: "\f10f"; }
+.flaticon-business-1:before { content: "\f110"; }
+.flaticon-exercise:before { content: "\f111"; }
+.flaticon-medical-1:before { content: "\f112"; }
+.flaticon-smile:before { content: "\f113"; }
+.flaticon-fruits:before { content: "\f114"; }
+.flaticon-arrows:before { content: "\f115"; }
+.flaticon-business:before { content: "\f116"; }
+.flaticon-tennis:before { content: "\f117"; }
+.flaticon-jumping-silhouette:before { content: "\f118"; }
+.flaticon-note-1:before { content: "\f119"; }
+.flaticon-sports-1:before { content: "\f11a"; }
+.flaticon-food:before { content: "\f11b"; }
+.flaticon-people:before { content: "\f11c"; }
+.flaticon-line:before { content: "\f11d"; }
+.flaticon-sports:before { content: "\f11e"; }
+.flaticon-medical:before { content: "\f11f"; }
+.flaticon-shape:before { content: "\f120"; }
+.flaticon-note:before { content: "\f121"; }
+.flaticon-technology:before { content: "\f122"; }
+    
+    $font-Flaticon-folder: "\f100";
+    $font-Flaticon-shape-1: "\f101";
+    $font-Flaticon-computer: "\f102";
+    $font-Flaticon-book: "\f103";
+    $font-Flaticon-arrow: "\f104";
+    $font-Flaticon-nature-1: "\f105";
+    $font-Flaticon-sport: "\f106";
+    $font-Flaticon-food-1: "\f107";
+    $font-Flaticon-exercise-2: "\f108";
+    $font-Flaticon-dumbbell: "\f109";
+    $font-Flaticon-maps-and-flags: "\f10a";
+    $font-Flaticon-minus-symbol: "\f10b";
+    $font-Flaticon-plus-symbol: "\f10c";
+    $font-Flaticon-people-1: "\f10d";
+    $font-Flaticon-exercise-1: "\f10e";
+    $font-Flaticon-nature: "\f10f";
+    $font-Flaticon-business-1: "\f110";
+    $font-Flaticon-exercise: "\f111";
+    $font-Flaticon-medical-1: "\f112";
+    $font-Flaticon-smile: "\f113";
+    $font-Flaticon-fruits: "\f114";
+    $font-Flaticon-arrows: "\f115";
+    $font-Flaticon-business: "\f116";
+    $font-Flaticon-tennis: "\f117";
+    $font-Flaticon-jumping-silhouette: "\f118";
+    $font-Flaticon-note-1: "\f119";
+    $font-Flaticon-sports-1: "\f11a";
+    $font-Flaticon-food: "\f11b";
+    $font-Flaticon-people: "\f11c";
+    $font-Flaticon-line: "\f11d";
+    $font-Flaticon-sports: "\f11e";
+    $font-Flaticon-medical: "\f11f";
+    $font-Flaticon-shape: "\f120";
+    $font-Flaticon-note: "\f121";
+    $font-Flaticon-technology: "\f122";
