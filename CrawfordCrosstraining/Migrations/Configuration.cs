@@ -9,8 +9,7 @@ namespace CrawfordCrosstraining.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "CrawfordCrosstraining.Models.ApplicationDbContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(CrawfordCrosstraining.Models.ApplicationDbContext context)

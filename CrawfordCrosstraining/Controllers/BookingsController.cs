@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CrawfordCrosstraining.Models;
+using DHTMLX.Scheduler;
+using DHTMLX.Scheduler.Data;
+using DHTMLX.Common;
 
 namespace CrawfordCrosstraining.Controllers
 {
@@ -17,102 +20,52 @@ namespace CrawfordCrosstraining.Controllers
         // GET: Bookings
         public ActionResult Index()
         {
-            return View(db.Bookings.ToList());
+            var scheduler = new DHXScheduler(this);
+            scheduler.Skin = DHXScheduler.Skins.Flat;
+
+            scheduler.Config.first_hour = 6;
+            scheduler.Config.last_hour = 20;
+
+            scheduler.LoadData = true;
+            scheduler.EnableDataprocessor = true;
+
+            return View(scheduler);
+
+        }
+        public ContentResult Data()
+        {
+            var apps = db.Bookings.ToList();
+            return new SchedulerAjaxData(apps);
         }
 
-        // GET: Bookings/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Save(int? id, FormCollection actionValues)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Booking booking = db.Bookings.Find(id);
-            if (booking == null)
-            {
-                return HttpNotFound();
-            }
-            return View(booking);
-        }
+            var action = new DataAction(actionValues);
 
-        // GET: Bookings/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Bookings/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BookingId")] Booking booking)
-        {
-            if (ModelState.IsValid)
+            try
             {
-                db.Bookings.Add(booking);
+                var changedEvent = DHXEventsHelper.Bind<Booking>(actionValues);
+                switch (action.Type)
+                {
+                    case DataActionTypes.Insert:
+                        db.Bookings.Add(changedEvent);
+                        break;
+                    case DataActionTypes.Delete:
+                        db.Entry(changedEvent).State = EntityState.Deleted;
+                        break;
+                    default:// "update"  
+                        db.Entry(changedEvent).State = EntityState.Modified;
+                        break;
+                }
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                action.TargetId = changedEvent.Id;
+            }
+            catch (Exception)
+            {
+                action.Type = DataActionTypes.Error;
             }
 
-            return View(booking);
-        }
-
-        // GET: Bookings/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Booking booking = db.Bookings.Find(id);
-            if (booking == null)
-            {
-                return HttpNotFound();
-            }
-            return View(booking);
-        }
-
-        // POST: Bookings/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BookingId")] Booking booking)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(booking).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(booking);
-        }
-
-        // GET: Bookings/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Booking booking = db.Bookings.Find(id);
-            if (booking == null)
-            {
-                return HttpNotFound();
-            }
-            return View(booking);
-        }
-
-        // POST: Bookings/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Booking booking = db.Bookings.Find(id);
-            db.Bookings.Remove(booking);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            return (new AjaxSaveResponse(action));
         }
 
         protected override void Dispose(bool disposing)
@@ -123,5 +76,8 @@ namespace CrawfordCrosstraining.Controllers
             }
             base.Dispose(disposing);
         }
+
+       
+        }
     }
-}
+

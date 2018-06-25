@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Crawford Crosstraining</title>
 
-
+    <link href="~/Assets/html5lightbox/Icons/css/fontello.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/responsive.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/fonts/flaticon.css" rel="stylesheet" />
+
+    <link href="~/Assets/Angular-bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="~/Images/favicon/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="~/Images/favicon/favicon-16x16.png" sizes="16x16">
 </head>
 <body>
-    
+    <div class="boxed_wrapper">
         <div class="preloader"></div>
 
         <section class="mainmenu-area">
@@ -25,11 +28,8 @@
                             <!--Start logo-->
                             <div class="logo pull-left">
                                 <a href="index.html">
-                                    <img src="images/resources/logo.png" alt="Awesome Logo">
-                                </a>
-                                <div class="smile">
-                                    <img src="images/resources/smile.png" alt="">
-                                </div>
+                                    <img src="~/Images/resources/logo.png" alt="Awesome Logo">
+                                </a>                                
                             </div>
                             <!--End logo-->
                             <!--Start mainmenu-->
@@ -45,21 +45,10 @@
                                     <ul class="navigation clearfix">
                                         <li class="current"><a href="index.html">Home</a></li>
                                         <li class="dropdown">
-                                            <a href="about.html">ABOUT US</a>
-                                            <ul>
-                                                <li><a href="about.html">About Health Coach</a></li>
-                                                <li><a href="testimonials.html">Success Stories</a></li>
-                                                <li><a href="project.html">Gallery</a></li>
-                                                <li><a href="project-single.html">Gallery Single</a></li>
-                                                <li><a href="faq.html">FAQ’s</a></li>
-                                            </ul>
+                                            <a href="about.html">ABOUT US</a>                                            
                                         </li>
                                         <li class="dropdown">
-                                            <a href="services.html">Services</a>
-                                            <ul>
-                                                <li><a href="services.html">View All Services</a></li>
-                                                <li><a href="service-single.html">Service Single</a></li>
-                                            </ul>
+                                            <a href="services.html">Services</a>                                            
                                         </li>
                                         @* This section to be implemented once blog functionality is enabled*@
                                         @*<li class="dropdown">
@@ -75,6 +64,7 @@
                                 </div>
                             </nav>
                             <!--End mainmenu-->
+
                             <!--Start mainmenu right box-->
                             <div class="mainmenu-right-box pull-right">
                                 <div class="outer-search-box">
@@ -91,7 +81,7 @@
                                     </ul>
                                 </div>
                                 <div class="appointment-button">
-                                    <a class="thm-btn bgclr-1" href="#">Appointment</a>
+                                    <input class="thm-btn bgclr-1" type="button" value="Register Now" onclick="location.href='@Url.Action("Login", "Account")'" />                                    
                                 </div>
                             </div>
                             <!--End mainmenu right box-->
@@ -102,77 +92,86 @@
         </section>
 
         @RenderBody()
+    </div>
 
-        
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("Scripts", required: false)
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    
+    <section class="Scripts">
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
 
-    <!-- Wow Script -->
-    <script src="~/Scripts/wow.js"></script>
-    <!-- bootstrap -->
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <!-- bx slider -->
-    <script src="~/Scripts/jquery.bxslider.min.js"></script>
-    <!-- count to -->
-    <script src="~/Scripts/jquery.countTo.js"></script>
-    <!-- owl carousel -->
-    <script src="~/Scripts/owl.carousel.min.js"></script>
-    <!-- validate -->
-    <script src="~/Scripts/validation.js"></script>
-    <!-- mixit up -->
-    <script src="~/Scripts/jquery.mixitup.min.js"></script>
-    <!-- easing -->
-    <script src="~/Scripts/jquery.easing.min.js"></script>
-    <!-- gmap helper -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHzPSV2jshbjI8fqnC_C4L08ffnj5EN3A"></script>
-    <!--gmap script-->
-    <script src="~/Scripts/gmaps.js"></script>
-    <script src="~/Scripts/map-helper.js"></script>
-    <!-- fancy box -->
-    <script src="~/Scripts/jquery.fancybox.pack.js"></script>
-    <script src="~/Scripts/jquery.appear.js"></script>
-    <!-- isotope script-->
-    <script src="~/Scripts/isotope.js"></script>
-    <script src="~/Scripts/jquery.prettyPhoto.js"></script>
-    <script src="~/Scripts/jquery.bootstrap-touchspin.js"></script>
-    <!-- jQuery timepicker js -->
-    <script src="~/Assets/timepicker/timePicker.js"></script>
-    <!-- Bootstrap select picker js -->
-    <script src="~/Assets/bootstrap-sl-1.12.1/bootstrap-select.js"></script>
-    <!-- Bootstrap bootstrap touchspin js -->
-    <!-- jQuery ui js -->
-    <script src="~/Assets/jquery-ui-1.11.4/jquery-ui.js"></script>
-    <!-- Language Switche  -->
-    <script src="~/Assets/language-switcher/jquery.polyglot.language.switcher.js"></script>
-    <!-- Html 5 light box script-->
-    <script src="~/Assets/html5lightbox/html5lightbox.js"></script>
-
-
-    <!-- revolution slider js -->
-    <script src="~/Assets/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script src="~/Assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
-
-    <script src="~/Assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script src="~/Assets/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script src="~/Assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script src="~/Assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script src="~/Assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script src="~/Assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-
-    <script src="~/Assets/revolution/js/extensions/source/revolution.extension.parallax.js"></script>
-
-    <script src="~/Assets/revolution/js/extensions/source/revolution.extension.slideanims.js"></script>
-    <script src="~/Assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
+        <!-- Wow Script -->
+        <script src="~/Scripts/wow.js"></script>
+        <!-- bootstrap -->
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <!-- bx slider -->
+        <script src="~/Scripts/jquery.bxslider.min.js"></script>
+        <!-- count to -->
+        <script src="~/Scripts/jquery.countTo.js"></script>
+        <!-- owl carousel -->
+        <script src="~/Scripts/owl.carousel.min.js"></script>
+        <!-- validate -->
+        <script src="~/Scripts/validation.js"></script>
+        <!-- mixit up -->
+        <script src="~/Scripts/jquery.mixitup.min.js"></script>
+        <!-- easing -->
+        <script src="~/Scripts/jquery.easing.min.js"></script>
+        <!-- gmap helper -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHzPSV2jshbjI8fqnC_C4L08ffnj5EN3A"></script>
+        <!--gmap script-->
+        <script src="~/Scripts/gmaps.js"></script>
+        <script src="~/Scripts/map-helper.js"></script>
+        <!-- fancy box -->
+        <script src="~/Scripts/jquery.fancybox.pack.js"></script>
+        <script src="~/Scripts/jquery.appear.js"></script>
+        <!-- isotope script-->
+        <script src="~/Scripts/isotope.js"></script>
+        <script src="~/Scripts/jquery.prettyPhoto.js"></script>
+        <script src="~/Scripts/jquery.bootstrap-touchspin.js"></script>
+        <!-- jQuery timepicker js -->
+        <!-- Bootstrap select picker js -->
+        <script src="~/Assets/bootstrap-sl-1.12.1/bootstrap-select.js"></script>
+        <!-- Bootstrap bootstrap touchspin js -->
+        <!-- jQuery ui js -->
+        <script src="~/Assets/jquery-ui-1.11.4/jquery-ui.js"></script>
+        <!-- Language Switche  -->
+        <script src="~/Assets/language-switcher/jquery.polyglot.language.switcher.js"></script>
+        <!-- Html 5 light box script-->
+        <script src="~/Assets/html5lightbox/html5lightbox.js"></script>
 
 
+        <!-- revolution slider js -->
+        <script src="~/Assets/revolution/js/jquery.themepunch.tools.min.js"></script>
+        <script src="~/Assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
+
+        <script src="~/Assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+        <script src="~/Assets/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+        <script src="~/Assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+        <script src="~/Assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+        <script src="~/Assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+        <script src="~/Assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+
+        <script src="~/Assets/revolution/js/extensions/source/revolution.extension.parallax.js"></script>
+        <script src="~/Assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+        <script src="~/Assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+        <script src="~/Assets/revolution/js/extensions/source/revolution.extension.slideanims.js"></script>
+        <script src="~/Assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
+        
+        <!--Angular Bootstrap DateTimePicker-->
+        <script src="~/Scripts/moment.js"></script>
+        <script src="~/Scripts/angular.js"></script>
+        <script src="~/Assets/Angular-bootstrap-datetimepicker/js/datetimepicker.js"></script>
+        <script src="~/Assets/Angular-bootstrap-datetimepicker/js/datetimepicker.templates.js"></script>
 
 
 
-    <!-- thm custom script -->
-    <script src="~/Scripts/custom.js"></script>
+
+        <!-- thm custom script -->
+        <script src="~/Scripts/custom.js"></script>
+    </section>
+
 </body>
 </html>

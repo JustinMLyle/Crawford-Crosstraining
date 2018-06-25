@@ -1,23 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Data.Entity;
+using DHTMLX.Scheduler;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CrawfordCrosstraining.Models
 {
     public class Booking
     {
 
+        
+
         [Key]
-        public int BookingId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DHXJson(Alias = "id")]
+        public int Id { get; set; }
 
-        DateTime StartTime { get; set; }
-        DateTime EndTime { get; set; }
+        [DHXJson(Alias = "text")]
+        public string Description { get; set; }
 
-        ApplicationUser Member { get; set; }
-        ApplicationUser Trainer { get; set; }
+        [DHXJson(Alias = "start_date")]
+        public DateTime StartDate { get; set; }
+
+        [DHXJson(Alias = "end_date")]
+        public DateTime EndDate { get; set; }
 
     }
 }

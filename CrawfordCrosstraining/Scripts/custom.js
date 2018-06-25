@@ -501,14 +501,6 @@ function datepicker () {
 }
 
 
-
-//=== Time picker===
-function timepicker () {
-    $('input[name="time"]').ptTimeSelect();
-}
-
-
-
 //=== CountDownTimer===
 function countDownTimer () {
 	if ($('.time-countdown').length) {
@@ -703,8 +695,7 @@ jQuery(document).on('ready', function () {
         projectCarousel ();
         serviceCarousel ();
         prettyPhoto ();
-        datepicker ();
-        timepicker ();
+        datepicker ();        
         tooltip ()
        
 
