@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Stripe;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,10 +14,12 @@ namespace CrawfordCrosstraining
     {
         protected void Application_Start()
         {
+            StripeConfiguration.SetApiKey(ConfigurationManager.AppSettings["sk_test_t6Sq0rtKvpxmE0oHFvihPqk3"]);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
         }
     }
 }

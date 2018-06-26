@@ -45,10 +45,11 @@
                                     <ul class="navigation clearfix">
                                         <li class="current"><a href="index.html">Home</a></li>
                                         <li class="dropdown">
-                                            <a href="about.html">ABOUT US</a>                                            
+                                            @Html.ActionLink("Pay your Bill", "Index", "Checkout")
                                         </li>
                                         <li class="dropdown">
-                                            <a href="services.html">Services</a>                                            
+                                            @Html.ActionLink("Book a Session", "Index", "Bookings")                                                                                       
+
                                         </li>
                                         @* This section to be implemented once blog functionality is enabled*@
                                         @*<li class="dropdown">
@@ -159,7 +160,7 @@
         <script src="~/Assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
         <script src="~/Assets/revolution/js/extensions/source/revolution.extension.slideanims.js"></script>
         <script src="~/Assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
-        
+
         <!--Angular Bootstrap DateTimePicker-->
         <script src="~/Scripts/moment.js"></script>
         <script src="~/Scripts/angular.js"></script>
@@ -167,6 +168,8 @@
         <script src="~/Assets/Angular-bootstrap-datetimepicker/js/datetimepicker.templates.js"></script>
 
 
+        <!--Stripe Scripts-->
+        <script src="https://js.stripe.com/v3/"></script>
 
 
         <!-- thm custom script -->
