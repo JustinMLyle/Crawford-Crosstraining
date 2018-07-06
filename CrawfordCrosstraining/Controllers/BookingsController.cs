@@ -7,77 +7,67 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CrawfordCrosstraining.Models;
-using DHTMLX.Scheduler;
-using DHTMLX.Scheduler.Data;
-using DHTMLX.Common;
+using RestSharp;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Net.Http.Headers;
 
 namespace CrawfordCrosstraining.Controllers
 {
     public class BookingsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Bookings
+
+
+        public void CreateCalendlyWebhookSubscription()
+        {
+            var task = PostCreateWebhookSubscription();
+            task.Wait();
+            var response = task.Result;
+            var body = response.Content.ReadAsStringAsync().Result;
+        }
+
+        private static async Task<HttpResponseMessage> PostCreateWebhookSubscription()
+        {
+            var client = new HttpClient { BaseAddress = new Uri("https://calendly.com") };
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/v1/hooks/");
+            var keyValues = new List<KeyValuePair<string, string>>
+        {
+            new KeyValuePair<string, string>("url"," http://localhost:56176/Bookings/Index.html"),
+            new KeyValuePair<string, string>("events[]","invitee.created"),
+            new KeyValuePair<string, string>("events[]","invitee.canceled")
+        };
+            request.Content = new FormUrlEncodedContent(keyValues);
+            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded") { CharSet = "UTF-8" };
+            request.Content.Headers.Add("X-TOKEN", "GONIOOMIHJJVJ2VWJBIBMUEMI5PEWHWA");
+            return await client.SendAsync(request);
+        }
+
         public ActionResult Index()
         {
-            var scheduler = new DHXScheduler(this);
-            scheduler.Skin = DHXScheduler.Skins.Flat;
 
-            scheduler.Config.first_hour = 6;
-            scheduler.Config.last_hour = 20;
-
-            scheduler.LoadData = true;
-            scheduler.EnableDataprocessor = true;
-
-            return View(scheduler);
-
+            
+            return View();
         }
-        public ContentResult Data()
+
+        public ActionResult About()
         {
-            var apps = db.Bookings.ToList();
-            return new SchedulerAjaxData(apps);
+            ViewData["Message"] = "Your application description page.";
+
+            return View();
         }
 
-        public ActionResult Save(int? id, FormCollection actionValues)
+        public ActionResult Contact()
         {
-            var action = new DataAction(actionValues);
+            ViewData["Message"] = "Your contact page.";
 
-            try
-            {
-                var changedEvent = DHXEventsHelper.Bind<Booking>(actionValues);
-                switch (action.Type)
-                {
-                    case DataActionTypes.Insert:
-                        db.Bookings.Add(changedEvent);
-                        break;
-                    case DataActionTypes.Delete:
-                        db.Entry(changedEvent).State = EntityState.Deleted;
-                        break;
-                    default:// "update"  
-                        db.Entry(changedEvent).State = EntityState.Modified;
-                        break;
-                }
-                db.SaveChanges();
-                action.TargetId = changedEvent.Id;
-            }
-            catch (Exception)
-            {
-                action.Type = DataActionTypes.Error;
-            }
-
-            return (new AjaxSaveResponse(action));
+            return View();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-       
-        }
+        //public ActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
     }
-
+}

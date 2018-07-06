@@ -27,9 +27,9 @@
                         <div class="col-lg-12 clearfix">
                             <!--Start logo-->
                             <div class="logo pull-left">
-                                <a href="index.html">
-                                    <img src="~/Images/resources/logo.png" alt="Awesome Logo">
-                                </a>                                
+                                <a href='@Url.Action("Index", "Home")'>
+                                    <img src='@Url.Content("~/Images/resources/logo.png")' />
+                                </a>
                             </div>
                             <!--End logo-->
                             <!--Start mainmenu-->
@@ -43,13 +43,11 @@
                                 </div>
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class="current"><a href="index.html">Home</a></li>
-                                        <li class="dropdown">
-                                            @Html.ActionLink("Pay your Bill", "Index", "Checkout")
+                                        <li id="homeMarker">
+                                            @Html.ActionLink("Home", "Index", "Home")
                                         </li>
-                                        <li class="dropdown">
-                                            @Html.ActionLink("Book a Session", "Index", "Bookings")                                                                                       
-
+                                        <li id="bookingMarker">
+                                            @Html.ActionLink("Book a Session", "Index", "Bookings")
                                         </li>
                                         @* This section to be implemented once blog functionality is enabled*@
                                         @*<li class="dropdown">
@@ -64,42 +62,35 @@
                                     </ul>
                                 </div>
                             </nav>
-                            <!--End mainmenu-->
-
-                            <!--Start mainmenu right box-->
-                            <div class="mainmenu-right-box pull-right">
-                                <div class="outer-search-box">
-                                    <div class="seach-toggle"><i class="fa fa-search"></i></div>
-                                    <ul class="search-box">
-                                        <li>
-                                            <form method="post" action="index.html">
-                                                <div class="form-group">
-                                                    <input type="search" name="search" placeholder="Search Here" required>
-                                                    <button type="submit"><i class="fa fa-search"></i></button>
-                                                </div>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="appointment-button">
-                                    <input class="thm-btn bgclr-1" type="button" value="Register Now" onclick="location.href='@Url.Action("Login", "Account")'" />                                    
-                                </div>
-                            </div>
-                            <!--End mainmenu right box-->
+                            <!--End mainmenu-->                            
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
         @RenderBody()
     </div>
+    <!--Start footer bottom area-->
+    <section class="footer-bottom-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="copyright-text">
+                        <p>Copyrights © 2017 All Rights Reserved, Powered by <a href="#">Crawford Crosstraining LLC.</a></p>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </section>
+
+
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-chevron-circle-up"></span></div>
 
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("Scripts", required: false)
-    
+
     <section class="Scripts">
         <script src="~/Scripts/jquery-1.10.2.js"></script>
         <script src="~/Scripts/bootstrap.min.js"></script>
